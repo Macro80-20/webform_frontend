@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component,  Fragment } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import Steps from './components/steps'
+import RegisterForm from './components/registerform'
+import PrivacyForm from './components/privacy'
+import './App.css'
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Radio,
+  Select,
+  TextArea,
+} from 'semantic-ui-react'
+export default class App extends Component {
+
+  state ={
+    Passed: false
+    // user: {
+    //   name: "",
+    //   role: "",
+    //   password: "",
+    //   email: "",
+    //   updates: false,
+    //   otherUpdates: false,
+    // },
+  }
+  nextPage = () =>{
+  //  const {name,role,password,email} = this.state.user
+    this.setState({Passed: true})
+    }
+
+  submit = (event) =>  
+  // find out the value you get from a tick in checkbox and toggle false or ture based on it 
+  this.setState({ [event.target.name]: event.target.value })
+  
+  render(){
+  
+    return(
+      <div>
+        {!this.state.Passed
+        ?<RegisterForm nextPage={this.nextPage}/>
+        :<PrivacyForm submit={this.submit}/>
+        }
+      <Steps/>
+        
     </div>
-  );
+    )
+  }
 }
 
-export default App;
