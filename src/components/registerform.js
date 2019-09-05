@@ -51,7 +51,8 @@ export default class RegisterForm extends Component {
     const {name ,role,  email, password } = this.state;
     alert(`Signed up with email: ${email} password: ${password}`);
     this.setState({ submittedName: name, submittedrole: role, submittedPassword: password, submittedEmail: email, submittedForm:true })
-    this.props.nextPage()
+    this.props.nextPage(name,role,email,password)
+    evt.preventDefault();
   };
 
   canBeSubmitted =() => {

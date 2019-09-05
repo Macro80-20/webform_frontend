@@ -15,6 +15,7 @@ export default class privacyForm extends Component{
         // find out the value you get from a tick in checkbox and toggle false or ture based on it 
         this.setState({ submittedUpdates:event.target.otherupdates.checked, submittedOtherupdates: event.target.otherupdates.checked
         })
+        this.props.nextPage(event.target.otherupdates.checked,event.target.otherupdates.checked);
       }
     render(){
         const {onChange} = this
