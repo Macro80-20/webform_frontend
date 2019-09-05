@@ -37,12 +37,16 @@ export default class RegisterForm extends Component {
  handleBlur = field => evt => {
 //This ensures that the first time a user focuses on the field, the error won’t appear right away. 
 //Instead, it will only pop up when the field is blurred. On subsequent focuses, though, the error would appear.
-// This is easily achievable by using the onBlur event and state to keep track of what was blurred.
     this.setState({
       touched: { ...this.state.touched, [field]: true }
     });
   };
 
+  canBeSubmitted =() => {
+    const errors = this.validateForm(this.state.name, this.state.email, this.state.password);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
   handleSubmit = evt => {
     if (this.canBeSubmitted()) {
       evt.preventDefault();
@@ -55,11 +59,7 @@ export default class RegisterForm extends Component {
     evt.preventDefault();
   };
 
-  canBeSubmitted =() => {
-    const errors = this.validateForm(this.state.name, this.state.email, this.state.password);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
-  }
+
 
 
   render(){

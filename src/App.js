@@ -1,33 +1,18 @@
 import React, { Component,  Fragment } from 'react'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
+
 import Steps from './components/steps'
 import RegisterForm from './components/registerform'
 import PrivacyForm from './components/privacy'
 import CompletedForm from './components/completedForm'
 import './App.css'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  Radio,
-  Select,
-  TextArea,
-} from 'semantic-ui-react'
-class App extends Component {
 
+class App extends Component {
   state ={
     step1: false,
     step2: false,
-    // user: {
-    //   name: "",
-    //   role: "",
-    //   password: "",
-    //   email: "",
-    //   updates: false,
-    //   otherUpdates: false,
-    // },
   }
+  
   privacyPage = (name,role,password,email) => {
     this.setState({
      step1: !this.state.step1,
@@ -50,7 +35,7 @@ class App extends Component {
   
   completed = () => {
    const { submittedName, submittedRole, submittedPassword,submittedEmail,updates,otherUpdates}=this.state 
-  console.log(submittedName, submittedRole, submittedPassword,submittedEmail,updates,otherUpdates)
+   console.log(submittedName, submittedRole, submittedPassword,submittedEmail,updates,otherUpdates)
   }
 
   render(){
