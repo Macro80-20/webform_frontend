@@ -1,16 +1,16 @@
 import React from 'react'
 import { Step } from 'semantic-ui-react'
 
-const Steps= () => (
+const Steps= (props) => (
   <Step.Group ordered>
-    <Step active>
+    <Step active={true} completed={props.progression}>
       <Step.Content>
         <Step.Title>User</Step.Title>
         <Step.Description></Step.Description>
       </Step.Content>
     </Step>
 
-    <Step active>
+    <Step active={true} completed={props.progression} >
       <Step.Content>
         <Step.Title>Privacy</Step.Title>
         <Step.Description></Step.Description>
